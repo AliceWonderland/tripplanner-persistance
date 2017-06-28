@@ -20,4 +20,30 @@ router.get('/', function(req, res, next) {
   .catch(next);
 });
 
+router.get('/api/hotels', function(req, res, next){
+
+  Hotel.findAll({})
+  .then(everything => {
+    res.json(everything);
+  })
+
+
+})
+
+router.get('/api/restaurants', function(req, res, next){
+  Restaurant.findAll({})
+  .then(everything => {
+    res.send(everything);
+  })
+})
+
+router.get('/api/activities', function(req, res, next){
+  Activity.findAll({})
+  .then(everything => {
+    res.send(everything);
+  })
+})
+
+
+
 module.exports = router;
