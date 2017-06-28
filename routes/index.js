@@ -3,6 +3,7 @@ var router = require('express').Router();
 var Hotel = require('../models').Hotel;
 var Restaurant = require('../models').Restaurant;
 var Activity = require('../models').Activity;
+var Day = require('../models').Day;
 
 router.get('/', function(req, res, next) {
   Promise.all([
@@ -39,6 +40,14 @@ router.get('/api/restaurants', function(req, res, next){
 
 router.get('/api/activities', function(req, res, next){
   Activity.findAll({})
+  .then(everything => {
+    res.send(everything);
+  })
+})
+
+
+router.get('/api/days', function(req, res, next){
+  Day.findAll({})
   .then(everything => {
     res.send(everything);
   })
